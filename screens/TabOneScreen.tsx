@@ -1,15 +1,21 @@
+import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import Task from '../components/Task';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One 1</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <View style={styles.tasksWrapper}>
+        <Text style={styles.sectionTitle}>Today's tasks</Text>
+        <View style={styles.items}>
+          <Task text="Make Todo static with UI" />
+          <Task text="Add Retrieve actions" />
+          <Task text="Add Create, Update, Delete actions" />
+        </View>
+      </View>
     </View>
   );
 }
@@ -17,16 +23,17 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#E8EAED',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  tasksWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: 'bold'
   },
+  items: {
+    marginTop: 30,
+  }
 });
